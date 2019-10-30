@@ -1,4 +1,4 @@
-module.exports = (req,res,next)=>{
-    //Do some stuff
-    next();
+module.exports = (req, res, next) => {
+  // Do some stuff
+  next()
 }

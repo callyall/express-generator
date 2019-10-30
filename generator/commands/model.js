@@ -1,16 +1,16 @@
-const fs = require('fs');
+const fs = require('fs')
 
-module.exports.execute = params=>{
-    if(params.length === 0){
-        throw new Error('Too few arguments!');
-    }
-    params[0] = params[0].toLowerCase();
+module.exports.execute = params => {
+  if (params.length === 0) {
+    throw new Error('Too few arguments!')
+  }
+  params[0] = params[0].toLowerCase()
 
-    let modelFile = fs.readFileSync('./generator/stubs/model.js').toString().replace('MODEL_NAME',params[0].charAt(0).toUpperCase() + params[0].slice(1));
+  const modelFile = fs.readFileSync('./generator/stubs/model.js').toString().replace('MODEL_NAME', params[0].charAt(0).toUpperCase() + params[0].slice(1))
 
-    fs.writeFileSync(`./models/${params[0]}.js`,modelFile);
-    console.log(`${params[0]} generated successfully!`);
-};
+  fs.writeFileSync(`./models/${params[0]}.js`, modelFile)
+  console.log(`${params[0]} generated successfully!`)
+}
 
 module.exports.help = `
 
@@ -18,6 +18,6 @@ module.exports.help = `
         Generates a model.
     Arguments:
         Model name
-`;
+`
 
-module.exports.folder = 'models';
+module.exports.folder = 'models'
